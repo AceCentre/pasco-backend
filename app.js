@@ -13,6 +13,10 @@ const TRUSTED_ORIGIN = (process.env.TRUSTED_ORIGIN||'').split(' ')
 if (TRUSTED_ORIGIN) {
   app.use(cors({
     origin: function (origin, callback) {
+      console.log("THIS IS RUN");
+      console.log(origin);
+      console.log(TRUSTED_ORIGIN);
+      console.log(TRUSTED_ORIGIN.indexOf(origin));
       if (!origin || TRUSTED_ORIGIN.indexOf(origin) != -1) {
         callback(null, true)
       } else {
